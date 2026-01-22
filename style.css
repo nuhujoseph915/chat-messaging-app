@@ -1,0 +1,14 @@
+.message { margin-bottom: 8px; display: flex; }
+.message.you { justify-content: flex-end; }
+.message.other { justify-content: flex-start; }
+
+.bubble {
+    max-width: 75%;
+    padding: 8px 12px;
+    border-radius: 18px;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.you .bubble { background: #dcf8c6; }
+.other .bubble { background: #fff; }
