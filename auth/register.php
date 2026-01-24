@@ -34,40 +34,55 @@ if (isset($_POST['register'])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Register</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Chat Messaging App</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
-<body class="container mt-5">
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>✨ Join Us Today</h1>
+                <p>Create your messaging account</p>
+            </div>
+            
+            <div class="auth-body">
+                <?php
+                if (isset($error)) {
+                    echo "<div class='alert alert-danger'>❌ $error</div>";
+                }
+                if (isset($success)) {
+                    echo "<div class='alert alert-success'>✅ $success</div>";
+                }
+                ?>
 
-<h2>Register</h2>
-
-<?php
-// Display messages
-if (isset($error)) {
-    echo "<div class='alert alert-danger'>$error</div>";
-}
-if (isset($success)) {
-    echo "<div class='alert alert-success'>$success</div>";
-}
-?>
-
-<form method="POST">
-    <div class="mb-2">
-        <label>Username</label>
-        <input type="text" name="username" class="form-control" placeholder="Enter username" required>
+                <form method="POST">
+                    <div class="form-group">
+                        <label class="form-label">👤 Username</label>
+                        <input type="text" name="username" class="form-input" placeholder="Choose a username" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">📧 Email Address</label>
+                        <input type="email" name="email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">🔐 Password</label>
+                        <input type="password" name="password" class="form-input" placeholder="Create a strong password" required>
+                    </div>
+                    
+                    <button type="submit" name="register" class="btn-submit">Create Account</button>
+                </form>
+            </div>
+            
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.php">Sign in here →</a></p>
+            </div>
+        </div>
     </div>
-    <div class="mb-2">
-        <label>Email</label>
-        <input type="email" name="email" class="form-control" placeholder="Enter email" required>
-    </div>
-    <div class="mb-2">
-        <label>Password</label>
-        <input type="password" name="password" class="form-control" placeholder="Enter password" required>
-    </div>
-    <button type="submit" name="register" class="btn btn-primary">Register</button>
-</form>
-
 </body>
 </html>

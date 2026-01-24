@@ -10,7 +10,7 @@ $receiver_id = $_GET['receiver'] ?? 0;
 
 if ($receiver_id == 0) exit;
 
-// Fetch messages
+// Fetch messages with improved styling
 $messages = mysqli_query($conn,
     "SELECT m.*, u.username FROM messages m
      JOIN users u ON m.sender_id = u.id
@@ -19,13 +19,24 @@ $messages = mysqli_query($conn,
      ORDER BY created_at ASC"
 );
 
+$messageCount = 0;
 while($msg = mysqli_fetch_assoc($messages)) {
-    $class = $msg['sender_id'] == $currentUser ? 'you' : 'other';
+    $messageCount++;
+    $isSender = $msg['sender_id'] == $currentUser;
+    $formattedTime = isset($msg['created_at']) ? date('g:i A', strtotime($msg['created_at'])) : date('g:i A');
+    $class = $isSender ? 'you' : 'other';
+    
     echo "<div class='message $class'>";
     echo "<div class='bubble'>";
-    echo "<strong>" . htmlspecialchars($msg['username']) . "</strong><br>";
-    echo htmlspecialchars($msg['message']) . "<br>";
-    echo "<small style='font-size:10px;color:gray'>" . $msg['created_at'] . "</small>";
+    echo htmlspecialchars($msg['message']);
+    echo "<div class='bubble-time'>$formattedTime</div>";
     echo "</div></div>";
+}
+
+if($messageCount == 0) {
+    echo '<div class="empty-state">';
+    echo '<div class="empty-state-icon">📭</div>';
+    echo '<p>No messages yet. Say hi!</p>';
+    echo '</div>';
 }
 ?>
