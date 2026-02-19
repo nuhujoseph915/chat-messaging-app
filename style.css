@@ -12,3 +12,35 @@
 
 .you .bubble { background: #dcf8c6; }
 .other .bubble { background: #fff; }
+.profile-box {
+    width: 360px;
+    margin: 60px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.1);
+    text-align: center;
+}
+
+.profile-box input,
+.profile-box textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+}
+
+.profile-box button {
+    background: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px;
+}

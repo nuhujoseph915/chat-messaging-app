@@ -67,6 +67,19 @@ body { background: #e5e7eb; display: flex; justify-content: center; padding: 20p
 .footer button { border-radius: 50%; width: 45px; height: 45px; }
 </style>
 </head>
+<script>
+function loadMessages() {
+    fetch("fetch_messages.php")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("chat-box").innerHTML = data;
+        });
+}
+
+setInterval(loadMessages, 2000);
+loadMessages();
+</script>
+
 <body>
 
 <div class="phone">
